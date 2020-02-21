@@ -1,0 +1,10 @@
+.git
+.vscode
+src
+webpack.*
+.babelrc
+.eslintrc
+.prettierrc
+.history
+package-lock.json
+dist/stats.json

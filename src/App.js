@@ -1,23 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+//import MultiImageInput from './lib/multi-image-input';
+import MultiImageInput from 'react-multiple-image-uploader';
 
 function App() {
+  const crop = {
+    unit: '%',
+    aspect: 4 / 3,
+    width: '100'
+  };
+
+  const [images, setImages] = useState({});
   return (
-    <div className="App">
+    <div className="App" style={{ maxWidth: '36rem' }}>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MultiImageInput
+          images={images}
+          setImages={setImages}
+          cropConfig={{ crop }}
+        />
       </header>
     </div>
   );
