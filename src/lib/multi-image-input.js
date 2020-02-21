@@ -20,11 +20,11 @@ export default function MultiImageInput({
   allowCrop,
   ...props
 }) {
-  const [numberOfImages, setNumberOfImages] = useState(1);
+  const [numberOfImages, setNumberOfImages] = useState(
+    Object.keys(files).length < max ? Object.keys(files).length : max
+  );
 
   const [fileUploadRefs, setFileUploadRefs] = useState({});
-
-  const [imagePreviews, setImagePreviews] = useState({});
 
   const [currentImage, setCurrentImage] = useState(null);
 
@@ -55,10 +55,11 @@ export default function MultiImageInput({
   }, [numberOfImages]);
 
   useEffect(() => {
-    if (numberOfImages < max && files[numberOfImages - 1]) {
-      setNumberOfImages(n => n + 1);
+    let imageCount = Object.keys(files).length;
+    if (imageCount < max) {
+      setNumberOfImages(Object.keys(files).length + 1);
     }
-  }, [files, max, numberOfImages]);
+  }, [files, max]);
 
   const handleFileChange = (e, index) => {
     e.preventDefault();
@@ -71,11 +72,6 @@ export default function MultiImageInput({
 
     reader.onloadend = () => {
       if (!allowCrop) {
-        setImagePreviews({
-          ...imagePreviews,
-          [index]: reader.result
-        });
-
         setFiles({ ...files, [index]: reader.result });
         return;
       }
@@ -99,11 +95,6 @@ export default function MultiImageInput({
     const imageRef = currentFile.current;
     if (imageRef && imageRef.width && imageRef.height) {
       const base64Image = getCroppedImage(imageRef, crop);
-
-      setImagePreviews({
-        ...imagePreviews,
-        [currentFileInputIndex.current]: base64Image
-      });
 
       setFiles({ ...files, [currentFileInputIndex.current]: base64Image });
     }
@@ -151,25 +142,23 @@ export default function MultiImageInput({
   const removeImage = (e, index) => {
     fileUploadRefs[index].current.value = '';
 
-    delete files[index];
-    delete imagePreviews[index];
-
     const reIndexedFiles = {};
-    const reIndexedPreviews = {};
 
     for (let i = index - 1; i >= 0; i--) {
       reIndexedFiles[i] = files[i];
-      reIndexedPreviews[i] = imagePreviews[i];
     }
 
-    for (let i = index; i < numberOfImages - 1; i++) {
-      reIndexedFiles[i] = files[i + 1];
-      reIndexedPreviews[i] = imagePreviews[i + 1];
+    if (Object.keys(files).length === max) {
+      for (let i = index; i < numberOfImages - 1; i++) {
+        reIndexedFiles[i] = files[i + 1];
+      }
+    } else {
+      for (let i = index; i < numberOfImages - 2; i++) {
+        reIndexedFiles[i] = files[i + 1];
+      }
     }
 
-    setImagePreviews(reIndexedPreviews);
     setFiles(reIndexedFiles);
-    setNumberOfImages(n => n - 1);
 
     exitCrop();
 
@@ -184,21 +173,24 @@ export default function MultiImageInput({
           .fill()
           .map((_, index) => (
             <ImageInput key={index}>
-              {imagePreviews[index] ? (
+              {files[index] ? (
                 <>
                   <DeleteImageButton
+                    aria-label={`Delete Image ${index}`}
                     onClick={e => removeImage(e, index)}
                     type="button"
                   />
                   <ImageOverlay>
                     <Image
-                      src={imagePreviews[index]}
+                      alt={`uploaded image${index}`}
+                      src={files[index]}
                       onClick={() => fileUploadRefs[index].current.click()}
                     />
                   </ImageOverlay>
                 </>
               ) : (
                 <div
+                  role="button"
                   onClick={() => fileUploadRefs[index].current.click()}
                   style={{ cursor: 'pointer' }}
                 >
