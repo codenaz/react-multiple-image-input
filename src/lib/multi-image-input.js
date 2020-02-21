@@ -15,7 +15,7 @@ import 'react-image-crop/dist/ReactCrop.css';
 export default function MultiImageInput({
   images: files,
   setImages: setFiles,
-  cropConfig: { crop: userDefinedCrop },
+  cropConfig,
   max,
   allowCrop,
   ...props
@@ -32,7 +32,7 @@ export default function MultiImageInput({
 
   const currentFileInputIndex = useRef(null);
 
-  const [crop, setCrop] = useState(userDefinedCrop);
+  const [crop, setCrop] = useState(cropConfig.crop);
 
   let userTheme;
 
@@ -70,6 +70,15 @@ export default function MultiImageInput({
     const file = e.target.files[0];
 
     reader.onloadend = () => {
+      if (!allowCrop) {
+        setImagePreviews({
+          ...imagePreviews,
+          [index]: reader.result
+        });
+
+        setFiles({ ...files, [index]: reader.result });
+        return;
+      }
       setCurrentImage(reader.result);
     };
 
@@ -169,7 +178,7 @@ export default function MultiImageInput({
   };
 
   return (
-    <ThemeProvider theme={{ ...theme, ...userTheme }}>
+    <ThemeProvider theme={{ ...theme, colors: userTheme }}>
       <ImageBox>
         {Array(numberOfImages)
           .fill()
@@ -179,7 +188,7 @@ export default function MultiImageInput({
                 <>
                   <DeleteImageButton
                     onClick={e => removeImage(e, index)}
-                    type='button'
+                    type="button"
                   />
                   <ImageOverlay>
                     <Image
@@ -194,13 +203,14 @@ export default function MultiImageInput({
                   style={{ cursor: 'pointer' }}
                 >
                   <ImageIcon
+                    fill={userTheme.outlineColor}
                     style={{ marginBottom: '0.5rem' }}
                     width={58}
                     height={46}
                   />
                   <Text
-                    fontSize='small'
-                    color='outlineColor'
+                    fontSize="small"
+                    color="outlineColor"
                     style={{ display: 'block' }}
                   >
                     ADD IMAGE
@@ -208,11 +218,11 @@ export default function MultiImageInput({
                 </div>
               )}
               <input
-                type='file'
+                type="file"
                 onChange={e => handleFileChange(e, index)}
                 ref={fileUploadRefs[index]}
                 style={{ visibility: 'hidden' }}
-                accept='image/*'
+                accept="image/*"
               />
             </ImageInput>
           ))}
@@ -220,17 +230,19 @@ export default function MultiImageInput({
       {allowCrop && currentImage && (
         <>
           <ReactCrop
+            minWidth={300}
+            maxWidth={800}
+            {...cropConfig}
             src={currentImage}
             crop={crop}
             onChange={setCrop}
             onImageLoaded={onImageLoaded}
             onComplete={onCropComplete}
-            {...props.cropConfig}
           />
           <Button
-            type='button'
+            type="button"
             onClick={exitCrop}
-            size='small'
+            size="small"
             style={{ marginTop: '1rem', display: 'block' }}
           >
             Crop
@@ -246,8 +258,8 @@ MultiImageInput.defaultProps = {
   theme: 'dark',
   allowCrop: true,
   cropConfig: {
-    maxCropWidth: 800,
-    minCropHeight: 300,
+    maxWidth: 800,
+    minHeight: 300,
     crop: {},
     ruleOfThirds: true
   }

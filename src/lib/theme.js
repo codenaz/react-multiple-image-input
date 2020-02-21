@@ -40,21 +40,17 @@ const theme = {
 };
 
 const darkTheme = {
-  colors: {
-    background: '#111111',
-    outlineColor: 'rgba(255,255,255,0.6)',
-    textColor: 'rgba(255,255,255,0.6)',
-    buttonColor: '#ff0e1f'
-  }
+  background: '#111111',
+  outlineColor: 'rgba(255,255,255,0.6)',
+  textColor: 'rgba(255,255,255,0.6)',
+  buttonColor: '#ff0e1f'
 };
 
 const lightTheme = {
-  colors: {
-    background: '#ffffff',
-    outlineColor: '#111111',
-    textColor: 'rgba(255,255,255,0.6)',
-    buttonColor: '#ff0e1f'
-  }
+  background: '#ffffff',
+  outlineColor: '#111111',
+  textColor: 'rgba(255,255,255,0.6)',
+  buttonColor: '#ff0e1f'
 };
 
 export { darkTheme, lightTheme };

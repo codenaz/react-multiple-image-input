@@ -1,5 +1,5 @@
 {
-  "name": "react-multiple-image-uploader",
+  "name": "react-multiple-image-input",
   "description": "A package for uploading multiple images at a time in react",
   "version": "0.1.0",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/emekadev/react-multiple-image-uploader"
+    "url": "https://github.com/codenaz/react-multiple-image-input"
   },
   "keywords": [
     "react",
