@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import MultiImageInput from './lib/multi-image-input';
-// import MultiImageInput from 'react-multiple-image-uploader';
+//import MultiImageInput from './lib/multi-image-input';
+import MultiImageInput from 'react-multiple-image-input';
 
 function App() {
   const crop = {

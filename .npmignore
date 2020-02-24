@@ -1,6 +1,9 @@
 .git
 .vscode
-src
+src/__tests__
+src/App.js
+src/index.js
+src/setupTests.js
 webpack.*
 .babelrc
 .eslintrc
