@@ -4,8 +4,6 @@
 
 ![demo](https://s5.gifyu.com/images/upload-demo.gif)
 
-A library for adding a simple multiple image upload and cropping feature to your react app.
-
 Requires react >= 16.8.0
 
 This package makes use of [react-image-cropper](https://github.com/DominicTobias/react-image-crop)
@@ -13,7 +11,7 @@ This package makes use of [react-image-cropper](https://github.com/DominicTobias
 ## Installation
 
 Run the following command:
-`npm install react-multiple-image-upload`
+`npm install react-multiple-image-input`
 
 ## Usage
 
@@ -32,7 +30,7 @@ function App() {
 
   return (
     <MultiImageInput
-      images={setImages}
+      images={images}
       setImages={setImages}
       cropConfig={{ crop, ruleOfThirds: true }}
     />
@@ -55,9 +53,9 @@ export default App;
 
 # Props Explained
 
-### images(required)
+### images(required)(_object_)
 
-This is an object that houses the Base64 URLs to all the selected images. Each image has a key that starts from index `0` and is incremental as more images are added. It should be a state variable so that `react-multiple-image-input` can update. Example:
+This is an object that houses the Base64 URLs to all the selected images. Each image has a key that starts from index `0` and is incremental as more images are added. It should be a state variable so that `react-multiple-image-input` can update it. Example:
 
 ```javascript
 {
@@ -67,7 +65,7 @@ This is an object that houses the Base64 URLs to all the selected images. Each i
 }
 ```
 
-### setImages(required)
+### setImages(required)(_function_)
 
 A function for updating the images state. This can be easily acheived with react's useState hook.
 
@@ -75,9 +73,9 @@ A function for updating the images state. This can be easily acheived with react
 const [images, setImages] = useState({});
 ```
 
-### max
+### max(optional)(_number_)
 
-This specifies the maximum number images you want this component to hold. It is set to `3` by default.
+This specifies the maximum number of images you want this component to hold. It is set to `3` by default.
 
 ```jsx
 <MultiImageInput
@@ -88,11 +86,11 @@ This specifies the maximum number images you want this component to hold. It is 
 />
 ```
 
-### allowCrop
+### allowCrop(optional)(_boolean_)
 
 A boolean attribute for enabling/disabling cropping. It is `true` by default, set it to `false` if you don't want cropping.
 
-### cropConfig
+### cropConfig(optional)(_object_)
 
 This sets the dimensions for cropping. You can pass in dimension props accepted by [react-image-cropper](https://github.com/DominicTobias/react-image-crop) into this object. A list of these props include
 
@@ -100,7 +98,7 @@ This sets the dimensions for cropping. You can pass in dimension props accepted 
 
 All crop params are initially optional.
 
-\* _While you can initially omit the crop object, any subsequent change will need to be saved to state in the `onChange` and passed into the component._
+\* _While you can initially omit the crop object, any subsequent change will need to be saved and passed into the component._
 
 ```js
 crop: {
