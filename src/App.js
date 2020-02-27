@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import MultiImageInput from './lib/multi-image-input';
+// import MultiImageInput from './lib/multi-image-input';
 import MultiImageInput from 'react-multiple-image-input';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <MultiImageInput
           images={images}
           setImages={setImages}
-          cropConfig={{ crop, ruleOfThirds: true }}
+          cropConfig={{ crop, ruleOfThirds: true, minWidth: 300 }}
         />
       </header>
     </div>

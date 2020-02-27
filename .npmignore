@@ -1,13 +1,10 @@
 .git
 .vscode
-src/__tests__
-src/App.js
-src/index.js
-src/setupTests.js
+src
 webpack.*
 .babelrc
 .eslintrc
 .prettierrc
 .history
 package-lock.json
-dist/stats.json
+stats.html

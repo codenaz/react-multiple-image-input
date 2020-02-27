@@ -32,9 +32,10 @@ exports[`renders correctly 1`] = `
             />
           </svg>
           <span
-            class="sc-Axmtr ekbNmN"
+            class="sc-Axmtr ipInAw"
             color="outlineColor"
             font-size="small"
+            font-weight="normal"
             style="display: block;"
           >
             ADD IMAGE
@@ -42,6 +43,7 @@ exports[`renders correctly 1`] = `
         </div>
         <input
           accept="image/*"
+          multiple=""
           style="visibility: hidden;"
           type="file"
         />

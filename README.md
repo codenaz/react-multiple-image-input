@@ -42,14 +42,15 @@ export default App;
 
 # Props
 
-| Property   | Type                | Default | Description                                                                                       |
-| ---------- | ------------------- | ------- | ------------------------------------------------------------------------------------------------- |
-| images     | Object (required)   |         | A state variable for holding the images                                                           |
-| setImages  | function (required) |         | A function that updates the images state                                                          |
-| max        | number              | `3`     | Max number of images allowed                                                                      |
-| allowCrop  | bool                | `true`  | Set to false to disable cropping                                                                  |
-| cropConfig | Object              |         | specifies cropping dimensions and limits                                                          | refer to https://github.com/DominicTobias/react-image-crop#props |
-| theme      | Object or String    | `dark`  | Can be a simple string that specifies light or dark, or an object with your custom configurations |
+| Property    | Type                | Default | Description                                                                                       |
+| ----------- | ------------------- | ------- | ------------------------------------------------------------------------------------------------- |
+| images      | Object (required)   |         | A state variable for holding the images                                                           |
+| setImages   | function (required) |         | A function that updates the images state                                                          |
+| max         | number              | `3`     | Max number of images allowed                                                                      |
+| allowCrop   | bool                | `true`  | Set to false to disable cropping                                                                  |
+| cropConfig  | Object              |         | specifies cropping dimensions and limits                                                          | refer to https://github.com/DominicTobias/react-image-crop#props |
+| theme       | Object or String    | `dark`  | Can be a simple string that specifies light or dark, or an object with your custom configurations |
+| handleError | function            |         | A function for handling errors from this component                                                |
 
 # Props Explained
 
@@ -61,7 +62,7 @@ This is an object that houses the Base64 URLs to all the selected images. Each i
 {
   0: image1,
   1: image2,
-  3, image3
+  3: image3
 }
 ```
 
@@ -262,4 +263,15 @@ This sets the color of any buttons in the component
     buttonColor: '#ff0e1f'
   }}
 />
+```
+
+#### handleError
+
+You can pass in a function that will take takes the error message(string) as a parameter and handle it in your own component
+
+```jsx
+
+const handleError = (e) => console.log(e)
+
+<MultiImageInput handleError={handleError} />
 ```

@@ -13,4 +13,8 @@ const Text = styled.span`
   text-align: ${props => props.theme.font.align[props.textAlign]};
 `;
 
+Text.defaultProps = {
+  fontWeight: 'normal'
+};
+
 export default Text;

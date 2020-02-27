@@ -78,3 +78,23 @@ test('deletes an image', () => {
   expect(setImages).toBeCalled();
   expect(Object.keys(images).length).toBe(2);
 });
+
+test('crops an image', () => {
+  let images = {
+    0: 'https://dababy.com/image.png',
+    1: 'https://larajean.com/image.png',
+    2: 'hhh'
+  };
+  const setImages = jest.fn(imageUpdate => (images = imageUpdate));
+  const { getAllByRole, getByText } = render(
+    <MultiImageInput
+      images={images}
+      setImages={setImages}
+      cropConfig={{ crop, ruleOfThirds: true }}
+    />
+  );
+  const editButton = getAllByRole('button', { label: 'Edit Image 0' });
+  fireEvent.click(editButton[0]);
+  const cropButton = getByText('Crop');
+  expect(cropButton).not.toBeNull();
+});

@@ -21,6 +21,42 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -3907,7 +3943,7 @@ var Button = styled.button(_templateObject$4(), function (props) {
 var DeleteImageButton = styled(Button)(_templateObject3());
 
 function _templateObject$5() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: inline-block;\n  opacity: 0.4;\n  cursor: pointer;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: inline-block;\n  opacity: 0.4;\n"]);
 
   _templateObject$5 = function _templateObject() {
     return data;
@@ -3937,6 +3973,9 @@ var Text = styled.span(_templateObject$6(), function (props) {
 }, function (props) {
   return props.theme.font.align[props.textAlign];
 });
+Text.defaultProps = {
+  fontWeight: 'normal'
+};
 
 var theme = {
   buttons: {
@@ -3969,7 +4008,7 @@ var theme = {
       big: '1.8rem',
       inherit: 'inherit',
       normal: '1.6rem',
-      small: '1.4rem'
+      small: '1rem'
     },
     weight: {
       normal: 'normal',
@@ -3990,6 +4029,55 @@ var lightTheme = {
   textColor: 'rgba(255,255,255,0.6)',
   buttonColor: '#ff0e1f'
 };
+
+function _templateObject$7() {
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  height: 2rem;\n  justify-content: space-between;\n  padding-right: 0.5px;\n  position: absolute;\n  right: 0.5rem;\n  top: 0.2rem;\n  width: 3rem;\n  z-index: 10;\n  cursor: pointer;\n"]);
+
+  _templateObject$7 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var ImageOptionsWrapper = styled('div')(_templateObject$7());
+
+function DeleteIcon(props) {
+  return React.createElement("svg", _extends({
+    viewBox: "0 0 512 512",
+    width: "401pt",
+    height: "401pt",
+    style: {
+      marginLeft: '0.5rem',
+      height: '1rem'
+    }
+  }, props), React.createElement("path", {
+    fill: "#E04F5F",
+    d: "M504.1 256C504.1 119 393 7.9 256 7.9S7.9 119 7.9 256 119 504.1 256 504.1 504.1 393 504.1 256z"
+  }), React.createElement("path", {
+    fill: "#FFF",
+    d: "M285 256l72.5-84.2c7.9-9.2 6.9-23-2.3-31-9.2-7.9-23-6.9-30.9 2.3L256 222.4l-68.2-79.2c-7.9-9.2-21.8-10.2-31-2.3-9.2 7.9-10.2 21.8-2.3 31L227 256l-72.5 84.2c-7.9 9.2-6.9 23 2.3 31 4.1 3.6 9.2 5.3 14.3 5.3 6.2 0 12.3-2.6 16.6-7.6l68.2-79.2 68.2 79.2c4.3 5 10.5 7.6 16.6 7.6 5.1 0 10.2-1.7 14.3-5.3 9.2-7.9 10.2-21.8 2.3-31L285 256z"
+  }));
+}
+
+function EditIcon(props) {
+  return React.createElement("svg", _extends({
+    height: "401pt",
+    viewBox: "0 -1 401.523 401",
+    width: "401pt",
+    style: {
+      marginleft: '0.5rem',
+      height: '1rem'
+    }
+  }, props), React.createElement("path", {
+    fill: "#fff",
+    fillOpacity: "0.7",
+    d: "M370.59 250.973c-5.524 0-10 4.476-10 10v88.789c-.02 16.562-13.438 29.984-30 30H50c-16.563-.016-29.98-13.438-30-30V89.172c.02-16.559 13.438-29.98 30-30h88.79c5.523 0 10-4.477 10-10 0-5.52-4.477-10-10-10H50c-27.602.031-49.969 22.398-50 50v260.594c.031 27.601 22.398 49.968 50 50h280.59c27.601-.032 49.969-22.399 50-50v-88.793c0-5.524-4.477-10-10-10zm0 0"
+  }), React.createElement("path", {
+    fill: "#fff",
+    fillOpacity: "0.7",
+    d: "M376.629 13.441c-17.574-17.574-46.067-17.574-63.64 0L134.581 191.848a9.997 9.997 0 00-2.566 4.402l-23.461 84.7a9.997 9.997 0 0012.304 12.308l84.7-23.465a9.997 9.997 0 004.402-2.566l178.402-178.41c17.547-17.587 17.547-46.055 0-63.641zM156.37 198.348L302.383 52.332l47.09 47.09-146.016 146.016zm-9.406 18.875l37.62 37.625-52.038 14.418zM374.223 74.676L363.617 85.28l-47.094-47.094 10.61-10.605c9.762-9.762 25.59-9.762 35.351 0l11.739 11.734c9.746 9.774 9.746 25.59 0 35.36zm0 0"
+  }));
+}
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -4018,7 +4106,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css$1 = ".ReactCrop_ReactCrop__3dEzP {\n  position: relative;\n  display: inline-block;\n  cursor: crosshair;\n  overflow: hidden;\n  max-width: 100%; }\n  .ReactCrop_ReactCrop__3dEzP:focus {\n    outline: none; }\n  .ReactCrop_ReactCrop--disabled__1w1fh, .ReactCrop_ReactCrop--locked__3Gh6L {\n    cursor: inherit; }\n  .ReactCrop_ReactCrop__image__3y189 {\n    display: block;\n    max-width: 100%;\n    touch-action: manipulation; }\n  .ReactCrop_ReactCrop--crop-invisible__2ENos .ReactCrop_ReactCrop__image__3y189 {\n    opacity: 0.5; }\n  .ReactCrop_ReactCrop__crop-selection__3nPpG {\n    position: absolute;\n    top: 0;\n    left: 0;\n    transform: translate3d(0, 0, 0);\n    box-sizing: border-box;\n    cursor: move;\n    box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5);\n    touch-action: manipulation;\n    border: 1px solid;\n    border-image-source: url(\"data:image/gif;base64,R0lGODlhCgAKAJECAAAAAP///////wAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OEI5RDc5MTFDNkE2MTFFM0JCMDZEODI2QTI4MzJBOTIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OEI5RDc5MTBDNkE2MTFFM0JCMDZEODI2QTI4MzJBOTIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuZGlkOjAyODAxMTc0MDcyMDY4MTE4MDgzQzNDMjA5MzREQ0ZDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAyODAxMTc0MDcyMDY4MTE4MDgzQzNDMjA5MzREQ0ZDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEBQoAAgAsAAAAAAoACgAAAhWEERkn7W3ei7KlagMWF/dKgYeyGAUAIfkEBQoAAgAsAAAAAAoACgAAAg+UYwLJ7RnQm7QmsCyVKhUAIfkEBQoAAgAsAAAAAAoACgAAAhCUYgLJHdiinNSAVfOEKoUCACH5BAUKAAIALAAAAAAKAAoAAAIRVISAdusPo3RAzYtjaMIaUQAAIfkEBQoAAgAsAAAAAAoACgAAAg+MDiem7Q8bSLFaG5il6xQAIfkEBQoAAgAsAAAAAAoACgAAAg+UYRLJ7QnQm7SmsCyVKhUAIfkEBQoAAgAsAAAAAAoACgAAAhCUYBLJDdiinNSEVfOEKoECACH5BAUKAAIALAAAAAAKAAoAAAIRFISBdusPo3RBzYsjaMIaUQAAOw==\");\n    border-image-slice: 1;\n    border-image-repeat: repeat; }\n    .ReactCrop_ReactCrop--disabled__1w1fh .ReactCrop_ReactCrop__crop-selection__3nPpG {\n      cursor: inherit; }\n    .ReactCrop_ReactCrop--circular-crop__3eVjG .ReactCrop_ReactCrop__crop-selection__3nPpG {\n      border-radius: 50%;\n      box-shadow: 0px 0px 1px 1px white, 0 0 0 9999em rgba(0, 0, 0, 0.5); }\n  .ReactCrop_ReactCrop__rule-of-thirds-vt__1qu-F::before, .ReactCrop_ReactCrop__rule-of-thirds-vt__1qu-F::after, .ReactCrop_ReactCrop__rule-of-thirds-hz__3cL8w::before, .ReactCrop_ReactCrop__rule-of-thirds-hz__3cL8w::after {\n    content: '';\n    display: block;\n    position: absolute;\n    background-color: rgba(255, 255, 255, 0.4); }\n  .ReactCrop_ReactCrop__rule-of-thirds-vt__1qu-F::before, .ReactCrop_ReactCrop__rule-of-thirds-vt__1qu-F::after {\n    width: 1px;\n    top: 0;\n    bottom: 0; }\n  .ReactCrop_ReactCrop__rule-of-thirds-vt__1qu-F::before {\n    left: 33.3333%;\n    left: calc(100% / 3); }\n  .ReactCrop_ReactCrop__rule-of-thirds-vt__1qu-F::after {\n    left: 66.6666%;\n    left: calc(100% / 3 * 2); }\n  .ReactCrop_ReactCrop__rule-of-thirds-hz__3cL8w::before, .ReactCrop_ReactCrop__rule-of-thirds-hz__3cL8w::after {\n    left: 0;\n    right: 0;\n    height: 1px; }\n  .ReactCrop_ReactCrop__rule-of-thirds-hz__3cL8w::before {\n    top: 33.3333%;\n    top: calc(100% / 3); }\n  .ReactCrop_ReactCrop__rule-of-thirds-hz__3cL8w::after {\n    top: 66.6666%;\n    top: calc(100% / 3 * 2); }\n  .ReactCrop_ReactCrop__drag-handle__1712x {\n    position: absolute;\n    width: 10px;\n    height: 10px;\n    background-color: rgba(0, 0, 0, 0.2);\n    border: 1px solid rgba(255, 255, 255, 0.7);\n    box-sizing: border-box;\n    outline: 1px solid transparent; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-nw__20lmC {\n    top: 0;\n    left: 0;\n    margin-top: -5px;\n    margin-left: -5px;\n    cursor: nw-resize; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-n__2SaoW {\n    top: 0;\n    left: 50%;\n    margin-top: -5px;\n    margin-left: -5px;\n    cursor: n-resize; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-ne__1LvoU {\n    top: 0;\n    right: 0;\n    margin-top: -5px;\n    margin-right: -5px;\n    cursor: ne-resize; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-e__3SWGL {\n    top: 50%;\n    right: 0;\n    margin-top: -5px;\n    margin-right: -5px;\n    cursor: e-resize; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-se__1avBL {\n    bottom: 0;\n    right: 0;\n    margin-bottom: -5px;\n    margin-right: -5px;\n    cursor: se-resize; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-s__1FPBX {\n    bottom: 0;\n    left: 50%;\n    margin-bottom: -5px;\n    margin-left: -5px;\n    cursor: s-resize; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-sw__1gqRv {\n    bottom: 0;\n    left: 0;\n    margin-bottom: -5px;\n    margin-left: -5px;\n    cursor: sw-resize; }\n  .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-w__jW5Gj {\n    top: 50%;\n    left: 0;\n    margin-top: -5px;\n    margin-left: -5px;\n    cursor: w-resize; }\n  .ReactCrop_ReactCrop__disabled__3hRe2 .ReactCrop_ReactCrop__drag-handle__1712x {\n    cursor: inherit; }\n  .ReactCrop_ReactCrop__drag-bar__1rsD9 {\n    position: absolute; }\n    .ReactCrop_ReactCrop__drag-bar__1rsD9.ReactCrop_ord-n__2SaoW {\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 6px;\n      margin-top: -3px; }\n    .ReactCrop_ReactCrop__drag-bar__1rsD9.ReactCrop_ord-e__3SWGL {\n      right: 0;\n      top: 0;\n      width: 6px;\n      height: 100%;\n      margin-right: -3px; }\n    .ReactCrop_ReactCrop__drag-bar__1rsD9.ReactCrop_ord-s__1FPBX {\n      bottom: 0;\n      left: 0;\n      width: 100%;\n      height: 6px;\n      margin-bottom: -3px; }\n    .ReactCrop_ReactCrop__drag-bar__1rsD9.ReactCrop_ord-w__jW5Gj {\n      top: 0;\n      left: 0;\n      width: 6px;\n      height: 100%;\n      margin-left: -3px; }\n  .ReactCrop_ReactCrop--new-crop__34bLi .ReactCrop_ReactCrop__drag-bar__1rsD9,\n  .ReactCrop_ReactCrop--new-crop__34bLi .ReactCrop_ReactCrop__drag-handle__1712x,\n  .ReactCrop_ReactCrop--fixed-aspect__2iD5W .ReactCrop_ReactCrop__drag-bar__1rsD9 {\n    display: none; }\n  .ReactCrop_ReactCrop--fixed-aspect__2iD5W .ReactCrop_ReactCrop__drag-handle__1712x.ReactCrop_ord-n__2SaoW,\n  .ReactCrop_ReactCrop--fixed-aspect__2iD5W .ReactCrop_ReactCrop__drag-handle__1712x.ReactCrop_ord-e__3SWGL,\n  .ReactCrop_ReactCrop--fixed-aspect__2iD5W .ReactCrop_ReactCrop__drag-handle__1712x.ReactCrop_ord-s__1FPBX,\n  .ReactCrop_ReactCrop--fixed-aspect__2iD5W .ReactCrop_ReactCrop__drag-handle__1712x.ReactCrop_ord-w__jW5Gj {\n    display: none; }\n  @media (pointer: coarse) {\n    .ReactCrop_ReactCrop__drag-handle__1712x {\n      width: 34px;\n      height: 34px; }\n    .ReactCrop_ReactCrop__drag-bar__1rsD9 {\n      display: none; }\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-nw__20lmC,\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-n__2SaoW,\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-ne__1LvoU,\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-e__3SWGL,\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-s__1FPBX,\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-sw__1gqRv,\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-w__jW5Gj {\n      display: none; }\n    .ReactCrop_ReactCrop__3dEzP .ReactCrop_ord-se__1avBL {\n      margin-bottom: -1px;\n      margin-right: -1px; } }\n";
+var css$1 = ".ReactCrop {\n  position: relative;\n  display: inline-block;\n  cursor: crosshair;\n  overflow: hidden;\n  max-width: 100%; }\n  .ReactCrop:focus {\n    outline: none; }\n  .ReactCrop--disabled, .ReactCrop--locked {\n    cursor: inherit; }\n  .ReactCrop__image {\n    display: block;\n    max-width: 100%;\n    touch-action: manipulation; }\n  .ReactCrop--crop-invisible .ReactCrop__image {\n    opacity: 0.5; }\n  .ReactCrop__crop-selection {\n    position: absolute;\n    top: 0;\n    left: 0;\n    transform: translate3d(0, 0, 0);\n    box-sizing: border-box;\n    cursor: move;\n    box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5);\n    touch-action: manipulation;\n    border: 1px solid;\n    border-image-source: url(\"data:image/gif;base64,R0lGODlhCgAKAJECAAAAAP///////wAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OEI5RDc5MTFDNkE2MTFFM0JCMDZEODI2QTI4MzJBOTIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OEI5RDc5MTBDNkE2MTFFM0JCMDZEODI2QTI4MzJBOTIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuZGlkOjAyODAxMTc0MDcyMDY4MTE4MDgzQzNDMjA5MzREQ0ZDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAyODAxMTc0MDcyMDY4MTE4MDgzQzNDMjA5MzREQ0ZDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEBQoAAgAsAAAAAAoACgAAAhWEERkn7W3ei7KlagMWF/dKgYeyGAUAIfkEBQoAAgAsAAAAAAoACgAAAg+UYwLJ7RnQm7QmsCyVKhUAIfkEBQoAAgAsAAAAAAoACgAAAhCUYgLJHdiinNSAVfOEKoUCACH5BAUKAAIALAAAAAAKAAoAAAIRVISAdusPo3RAzYtjaMIaUQAAIfkEBQoAAgAsAAAAAAoACgAAAg+MDiem7Q8bSLFaG5il6xQAIfkEBQoAAgAsAAAAAAoACgAAAg+UYRLJ7QnQm7SmsCyVKhUAIfkEBQoAAgAsAAAAAAoACgAAAhCUYBLJDdiinNSEVfOEKoECACH5BAUKAAIALAAAAAAKAAoAAAIRFISBdusPo3RBzYsjaMIaUQAAOw==\");\n    border-image-slice: 1;\n    border-image-repeat: repeat; }\n    .ReactCrop--disabled .ReactCrop__crop-selection {\n      cursor: inherit; }\n    .ReactCrop--circular-crop .ReactCrop__crop-selection {\n      border-radius: 50%;\n      box-shadow: 0px 0px 1px 1px white, 0 0 0 9999em rgba(0, 0, 0, 0.5); }\n  .ReactCrop__rule-of-thirds-vt::before, .ReactCrop__rule-of-thirds-vt::after, .ReactCrop__rule-of-thirds-hz::before, .ReactCrop__rule-of-thirds-hz::after {\n    content: '';\n    display: block;\n    position: absolute;\n    background-color: rgba(255, 255, 255, 0.4); }\n  .ReactCrop__rule-of-thirds-vt::before, .ReactCrop__rule-of-thirds-vt::after {\n    width: 1px;\n    top: 0;\n    bottom: 0; }\n  .ReactCrop__rule-of-thirds-vt::before {\n    left: 33.3333%;\n    left: calc(100% / 3); }\n  .ReactCrop__rule-of-thirds-vt::after {\n    left: 66.6666%;\n    left: calc(100% / 3 * 2); }\n  .ReactCrop__rule-of-thirds-hz::before, .ReactCrop__rule-of-thirds-hz::after {\n    left: 0;\n    right: 0;\n    height: 1px; }\n  .ReactCrop__rule-of-thirds-hz::before {\n    top: 33.3333%;\n    top: calc(100% / 3); }\n  .ReactCrop__rule-of-thirds-hz::after {\n    top: 66.6666%;\n    top: calc(100% / 3 * 2); }\n  .ReactCrop__drag-handle {\n    position: absolute;\n    width: 10px;\n    height: 10px;\n    background-color: rgba(0, 0, 0, 0.2);\n    border: 1px solid rgba(255, 255, 255, 0.7);\n    box-sizing: border-box;\n    outline: 1px solid transparent; }\n  .ReactCrop .ord-nw {\n    top: 0;\n    left: 0;\n    margin-top: -5px;\n    margin-left: -5px;\n    cursor: nw-resize; }\n  .ReactCrop .ord-n {\n    top: 0;\n    left: 50%;\n    margin-top: -5px;\n    margin-left: -5px;\n    cursor: n-resize; }\n  .ReactCrop .ord-ne {\n    top: 0;\n    right: 0;\n    margin-top: -5px;\n    margin-right: -5px;\n    cursor: ne-resize; }\n  .ReactCrop .ord-e {\n    top: 50%;\n    right: 0;\n    margin-top: -5px;\n    margin-right: -5px;\n    cursor: e-resize; }\n  .ReactCrop .ord-se {\n    bottom: 0;\n    right: 0;\n    margin-bottom: -5px;\n    margin-right: -5px;\n    cursor: se-resize; }\n  .ReactCrop .ord-s {\n    bottom: 0;\n    left: 50%;\n    margin-bottom: -5px;\n    margin-left: -5px;\n    cursor: s-resize; }\n  .ReactCrop .ord-sw {\n    bottom: 0;\n    left: 0;\n    margin-bottom: -5px;\n    margin-left: -5px;\n    cursor: sw-resize; }\n  .ReactCrop .ord-w {\n    top: 50%;\n    left: 0;\n    margin-top: -5px;\n    margin-left: -5px;\n    cursor: w-resize; }\n  .ReactCrop__disabled .ReactCrop__drag-handle {\n    cursor: inherit; }\n  .ReactCrop__drag-bar {\n    position: absolute; }\n    .ReactCrop__drag-bar.ord-n {\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 6px;\n      margin-top: -3px; }\n    .ReactCrop__drag-bar.ord-e {\n      right: 0;\n      top: 0;\n      width: 6px;\n      height: 100%;\n      margin-right: -3px; }\n    .ReactCrop__drag-bar.ord-s {\n      bottom: 0;\n      left: 0;\n      width: 100%;\n      height: 6px;\n      margin-bottom: -3px; }\n    .ReactCrop__drag-bar.ord-w {\n      top: 0;\n      left: 0;\n      width: 6px;\n      height: 100%;\n      margin-left: -3px; }\n  .ReactCrop--new-crop .ReactCrop__drag-bar,\n  .ReactCrop--new-crop .ReactCrop__drag-handle,\n  .ReactCrop--fixed-aspect .ReactCrop__drag-bar {\n    display: none; }\n  .ReactCrop--fixed-aspect .ReactCrop__drag-handle.ord-n,\n  .ReactCrop--fixed-aspect .ReactCrop__drag-handle.ord-e,\n  .ReactCrop--fixed-aspect .ReactCrop__drag-handle.ord-s,\n  .ReactCrop--fixed-aspect .ReactCrop__drag-handle.ord-w {\n    display: none; }\n  @media (pointer: coarse) {\n    .ReactCrop__drag-handle {\n      width: 34px;\n      height: 34px; }\n    .ReactCrop__drag-bar {\n      display: none; }\n    .ReactCrop .ord-nw,\n    .ReactCrop .ord-n,\n    .ReactCrop .ord-ne,\n    .ReactCrop .ord-e,\n    .ReactCrop .ord-s,\n    .ReactCrop .ord-sw,\n    .ReactCrop .ord-w {\n      display: none; }\n    .ReactCrop .ord-se {\n      margin-bottom: -1px;\n      margin-right: -1px; } }\n";
 styleInject(css$1);
 
 function MultiImageInput(_ref) {
@@ -4034,23 +4122,28 @@ function MultiImageInput(_ref) {
       numberOfImages = _useState2[0],
       setNumberOfImages = _useState2[1];
 
-  var _useState3 = React.useState({}),
+  var _useState3 = React.useState(files),
       _useState4 = _slicedToArray(_useState3, 2),
-      fileUploadRefs = _useState4[0],
-      setFileUploadRefs = _useState4[1];
+      originalFiles = _useState4[0],
+      setOriginalFiles = _useState4[1];
 
-  var _useState5 = React.useState(null),
+  var _useState5 = React.useState({}),
       _useState6 = _slicedToArray(_useState5, 2),
-      currentImage = _useState6[0],
-      setCurrentImage = _useState6[1];
+      fileUploadRefs = _useState6[0],
+      setFileUploadRefs = _useState6[1];
+
+  var _useState7 = React.useState(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      currentImage = _useState8[0],
+      setCurrentImage = _useState8[1];
 
   var currentFile = React.useRef(null);
   var currentFileInputIndex = React.useRef(null);
 
-  var _useState7 = React.useState(cropConfig.crop),
-      _useState8 = _slicedToArray(_useState7, 2),
-      crop = _useState8[0],
-      setCrop = _useState8[1];
+  var _useState9 = React.useState(cropConfig.crop),
+      _useState10 = _slicedToArray(_useState9, 2),
+      crop = _useState10[0],
+      setCrop = _useState10[1];
 
   var userTheme;
 
@@ -4072,27 +4165,119 @@ function MultiImageInput(_ref) {
 
     if (imageCount < max) {
       setNumberOfImages(Object.keys(files).length + 1);
+    } else {
+      setNumberOfImages(Object.keys(files).length);
     }
   }, [files, max]);
 
-  var handleFileChange = function handleFileChange(e, index) {
-    e.preventDefault();
-    currentFileInputIndex.current = index;
-    var reader = new FileReader();
-    var file = e.target.files[0];
+  var handleFileChange =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee(e, index) {
+      var maxAllowedImages, selectedFiles, imageURIs, imageUrisObject, i;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              e.preventDefault();
+              maxAllowedImages = max - Object.keys(files).length;
 
-    reader.onloadend = function () {
-      if (!allowCrop) {
-        setFiles(_objectSpread2({}, files, _defineProperty({}, index, reader.result)));
-        return;
-      }
+              if (!(e.target.files.length > maxAllowedImages)) {
+                _context.next = 6;
+                break;
+              }
 
-      setCurrentImage(reader.result);
+              if (props.handleError) {
+                props.handleError("You cannot upload more than ".concat(max, " ").concat(max > 1 ? 'images' : 'image'));
+              } else {
+                alert("You cannot upload more than ".concat(max, " ").concat(max > 1 ? 'images' : 'image'));
+              }
+
+              return _context.abrupt("return");
+
+            case 6:
+              selectedFiles = Array.from(e.target.files);
+              _context.next = 9;
+              return Promise.all(selectedFiles.map(function (f) {
+                return new Promise(function (resolve, reject) {
+                  var reader = new FileReader();
+
+                  reader.onloadend = function () {
+                    var image = document.createElement('img');
+                    var minWidth = cropConfig.minWidth,
+                        minHeight = cropConfig.minHeight;
+
+                    image.onload = function () {
+                      if (minWidth && image.width < minWidth) {
+                        reject("Image width cannot be less than ".concat(cropConfig.minWidth, "px"));
+                      }
+
+                      if (minHeight && image.width < minHeight) {
+                        reject("Image height cannot be less than ".concat(cropConfig.minWidth, "px"));
+                      }
+
+                      resolve(reader.result);
+                    };
+
+                    image.src = reader.result;
+                  };
+
+                  reader.onerror = function (e) {
+                    reject(e);
+                  };
+
+                  reader.readAsDataURL(f);
+                });
+              }));
+
+            case 9:
+              imageURIs = _context.sent;
+              imageUrisObject = {};
+
+              for (i = index; i < index + imageURIs.length; i++) {
+                imageUrisObject[i] = imageURIs[i - index];
+                currentFileInputIndex.current = i;
+              }
+
+              setFiles(_objectSpread2({}, files, {}, imageUrisObject));
+
+              if (allowCrop) {
+                setCurrentImage(imageUrisObject[index + imageURIs.length - 1]);
+                setOriginalFiles(_objectSpread2({}, originalFiles, {}, imageUrisObject));
+              }
+
+              _context.next = 19;
+              break;
+
+            case 16:
+              _context.prev = 16;
+              _context.t0 = _context["catch"](0);
+
+              if (props.handleError) {
+                props.handleError(_context.t0);
+              } else {
+                alert(_context.t0);
+              }
+
+            case 19:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 16]]);
+    }));
+
+    return function handleFileChange(_x, _x2) {
+      return _ref2.apply(this, arguments);
     };
+  }();
 
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+  var selectForCrop = function selectForCrop(e, i) {
+    currentFileInputIndex.current = i;
+    setCurrentImage(originalFiles[i]);
   };
 
   var onCropComplete = function onCropComplete(crop) {
@@ -4137,22 +4322,40 @@ function MultiImageInput(_ref) {
   var removeImage = function removeImage(e, index) {
     fileUploadRefs[index].current.value = '';
     var reIndexedFiles = {};
+    var reIndexedOriginals = {};
 
     for (var i = index - 1; i >= 0; i--) {
       reIndexedFiles[i] = files[i];
+
+      if (allowCrop) {
+        reIndexedOriginals[i] = originalFiles[i];
+      }
     }
 
     if (Object.keys(files).length === max) {
       for (var _i = index; _i < numberOfImages - 1; _i++) {
         reIndexedFiles[_i] = files[_i + 1];
+
+        if (allowCrop) {
+          reIndexedOriginals[_i] = originalFiles[_i + 1];
+        }
       }
     } else {
       for (var _i2 = index; _i2 < numberOfImages - 2; _i2++) {
         reIndexedFiles[_i2] = files[_i2 + 1];
+
+        if (allowCrop) {
+          reIndexedOriginals[_i2] = originalFiles[_i2 + 1];
+        }
       }
     }
 
     setFiles(reIndexedFiles);
+
+    if (allowCrop) {
+      setOriginalFiles(reIndexedOriginals);
+    }
+
     exitCrop();
     e.stopPropagation();
     return;
@@ -4165,18 +4368,21 @@ function MultiImageInput(_ref) {
   }, React__default.createElement(ImageBox, null, Array(numberOfImages).fill().map(function (_, index) {
     return React__default.createElement(ImageInput, {
       key: index
-    }, files[index] ? React__default.createElement(React__default.Fragment, null, React__default.createElement(DeleteImageButton, {
+    }, files[index] ? React__default.createElement(React__default.Fragment, null, React__default.createElement(ImageOptionsWrapper, null, React__default.createElement(EditIcon, {
+      "aria-label": "Edit Image ".concat(index),
+      role: "button",
+      onClick: function onClick(e) {
+        return selectForCrop(e, index);
+      }
+    }), React__default.createElement(DeleteIcon, {
       "aria-label": "Delete Image ".concat(index),
+      role: "button",
       onClick: function onClick(e) {
         return removeImage(e, index);
-      },
-      type: "button"
-    }), React__default.createElement(ImageOverlay, null, React__default.createElement(Image, {
-      alt: "uploaded image".concat(index),
-      src: files[index],
-      onClick: function onClick() {
-        return fileUploadRefs[index].current.click();
       }
+    })), React__default.createElement(ImageOverlay, null, React__default.createElement(Image, {
+      alt: "uploaded image".concat(index),
+      src: files[index]
     }))) : React__default.createElement("div", {
       role: "button",
       onClick: function onClick() {
@@ -4200,6 +4406,7 @@ function MultiImageInput(_ref) {
       }
     }, "ADD IMAGE")), React__default.createElement("input", {
       type: "file",
+      multiple: true,
       onChange: function onChange(e) {
         return handleFileChange(e, index);
       },
@@ -4209,10 +4416,7 @@ function MultiImageInput(_ref) {
       },
       accept: "image/*"
     }));
-  })), allowCrop && currentImage && React__default.createElement(React__default.Fragment, null, React__default.createElement(ReactCrop, _extends({
-    minWidth: 300,
-    maxWidth: 800
-  }, cropConfig, {
+  })), allowCrop && currentImage && React__default.createElement(React__default.Fragment, null, React__default.createElement(ReactCrop, _extends({}, cropConfig, {
     src: currentImage,
     crop: crop,
     onChange: setCrop,
@@ -4234,7 +4438,7 @@ MultiImageInput.defaultProps = {
   allowCrop: true,
   cropConfig: {
     maxWidth: 800,
-    minHeight: 300,
+    minWidth: 300,
     crop: {},
     ruleOfThirds: true
   }
@@ -4245,7 +4449,8 @@ MultiImageInput.propTypes = {
   allowCrop: propTypes.bool,
   max: propTypes.number,
   theme: propTypes.oneOfType([propTypes.object, propTypes.string]),
-  cropConfig: propTypes.object
+  cropConfig: propTypes.object,
+  handleError: propTypes.func
 };
 
 module.exports = MultiImageInput;

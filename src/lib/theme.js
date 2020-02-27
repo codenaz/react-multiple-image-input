@@ -29,7 +29,7 @@ const theme = {
       big: '1.8rem',
       inherit: 'inherit',
       normal: '1.6rem',
-      small: '1.4rem'
+      small: '1rem'
     },
     weight: {
       normal: 'normal',
