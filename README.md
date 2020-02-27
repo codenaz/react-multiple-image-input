@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/codenaz/react-multiple-image-input.svg?branch=master)](https://travis-ci.org/codenaz/react-multiple-image-input)
 
-![demo](https://s5.gifyu.com/images/upload-demo.gif)
+![demo](https://s4.gifyu.com/images/multiple-image-upload.gif)
 
 Requires react >= 16.8.0
 
