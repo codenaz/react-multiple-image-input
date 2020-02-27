@@ -3892,7 +3892,7 @@ var ImageBox = styled(FlexBox)(_templateObject$2(), function (props) {
 });
 
 function _templateObject$3() {
-  var data = _taggedTemplateLiteral(["\n  flex-direction: column;\n  max-width: 10rem;\n  justify-content: center;\n  margin-right: 1rem;\n  position: relative;\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex-direction: column;\n  width: auto;\n  max-width: 9rem;\n  justify-content: center;\n  margin-right: 1rem;\n  position: relative;\n"]);
 
   _templateObject$3 = function _templateObject() {
     return data;
