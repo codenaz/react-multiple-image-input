@@ -5,6 +5,7 @@ const ImageBox = styled(FlexBox)`
   background: ${props => props.theme.colors.background};
   border: 2px solid ${props => props.theme.colors.outlineColor};
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
   padding: 1.5rem 2rem;
   margin-bottom: 1rem;
