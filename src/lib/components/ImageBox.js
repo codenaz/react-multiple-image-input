@@ -7,8 +7,8 @@ const ImageBox = styled(FlexBox)`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding: 1.5rem 2rem;
   margin-bottom: 1rem;
+  padding: 1.5rem 2rem;
 `;
 
 export default ImageBox;

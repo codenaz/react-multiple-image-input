@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 const Image = styled.img`
-  width: 100%;
   display: inline-block;
+  height: auto;
   opacity: 0.4;
+  width: 100%;
 `;
 
 export default Image;

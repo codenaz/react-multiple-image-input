@@ -254,13 +254,18 @@ This sets the color of any text in the component
 
 This sets the color of any buttons in the component
 
+- modalColor
+
+This sets the background color of the modal component
+
 ```js
 <MultiImageInput
   theme={{
     background: '#ffffff',
     outlineColor: '#111111',
     textColor: 'rgba(255,255,255,0.6)',
-    buttonColor: '#ff0e1f'
+    buttonColor: '#ff0e1f',
+    modalColor: '#ffffff
   }}
 />
 ```

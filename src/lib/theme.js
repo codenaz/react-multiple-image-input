@@ -1,21 +1,15 @@
 const theme = {
   buttons: {
     small: {
-      fontSize: '1.2rem',
+      fontSize: '12px',
       fontWeight: 'normal',
-      padding: '0.5rem 1.0rem'
+      padding: '5px 10px'
     },
     normal: {
-      fontSize: '1.4rem',
+      fontSize: '14px',
       fontWeight: 'normal',
-      height: '4.0rem',
-      padding: '0.5rem 1.0rem'
-    },
-    large: {
-      fontSize: '1.4rem',
-      fontWeight: 'bold',
-      height: '5.0rem',
-      padding: '1.4rem 3.0rem'
+      height: '35px',
+      padding: '5px 10px'
     }
   },
   font: {
@@ -26,10 +20,10 @@ const theme = {
       right: 'right'
     },
     size: {
-      big: '1.8rem',
+      big: '18px',
       inherit: 'inherit',
-      normal: '1.6rem',
-      small: '1rem'
+      normal: '16px',
+      small: '10px'
     },
     weight: {
       normal: 'normal',
@@ -43,14 +37,16 @@ const darkTheme = {
   background: '#111111',
   outlineColor: 'rgba(255,255,255,0.6)',
   textColor: 'rgba(255,255,255,0.6)',
-  buttonColor: '#ff0e1f'
+  buttonColor: '#ff0e1f',
+  modalColor: '#111111'
 };
 
 const lightTheme = {
   background: '#ffffff',
   outlineColor: '#111111',
   textColor: 'rgba(255,255,255,0.6)',
-  buttonColor: '#ff0e1f'
+  buttonColor: '#ff0e1f',
+  modalColor: '#ffffff'
 };
 
 export { darkTheme, lightTheme };

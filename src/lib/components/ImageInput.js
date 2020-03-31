@@ -3,11 +3,11 @@ import FlexBox from './FlexBox';
 
 const ImageInput = styled(FlexBox)`
   flex-direction: column;
-  width: auto;
-  max-width: 9rem;
   justify-content: center;
   margin-right: 1rem;
+  max-width: 9rem;
   position: relative;
+  width: auto;
 `;
 
 export default ImageInput;
