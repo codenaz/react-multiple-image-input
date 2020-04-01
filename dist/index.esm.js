@@ -3872,7 +3872,7 @@ FlexBox.defaultProps = {
 };
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  background: ", ";\n  border: 2px solid ", ";\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n  padding: 1.5rem 2rem;\n  margin-bottom: 1rem;\n"]);
+  var data = _taggedTemplateLiteral(["\n  background: ", ";\n  border: 2px solid ", ";\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n  margin-bottom: 1rem;\n  padding: 1.5rem 2rem;\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -3887,7 +3887,7 @@ var ImageBox = styled(FlexBox)(_templateObject$2(), function (props) {
 });
 
 function _templateObject$3() {
-  var data = _taggedTemplateLiteral(["\n  flex-direction: column;\n  width: auto;\n  max-width: 9rem;\n  justify-content: center;\n  margin-right: 1rem;\n  position: relative;\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex-direction: column;\n  justify-content: center;\n  margin-right: 1rem;\n  max-width: 9rem;\n  position: relative;\n  width: auto;\n"]);
 
   _templateObject$3 = function _templateObject() {
     return data;
@@ -3898,7 +3898,7 @@ function _templateObject$3() {
 var ImageInput = styled(FlexBox)(_templateObject$3());
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  border: none;\n  display: flex;\n  flex-shrink: 0;\n  height: 1.5rem;\n  justify-content: center;\n  padding-right: 0.5px;\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n  width: 1.5rem;\n  z-index: 10;\n  background: none;\n  &:before,\n  &:after {\n    background: #ff0e1f;\n    border-radius: 2px;\n    content: '';\n    display: block;\n    height: 0.1rem;\n    left: 50%;\n    position: absolute;\n    top: 50%;\n    transition: 0.3s all;\n    width: 2rem;\n  }\n\n  &:before {\n    transform: translate(-50%, -50%) rotate(45deg);\n  }\n\n  &:after {\n    transform: translate(-50%, -50%) rotate(-45deg);\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background: none;\n  border: none;\n  display: flex;\n  flex-shrink: 0;\n  font-family: inherit;\n  height: 1.5rem;\n  justify-content: center;\n  padding-right: 0.5px;\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n  width: 1.5rem;\n  z-index: 10;\n\n  &:before,\n  &:after {\n    background: #ff0e1f;\n    border-radius: 2px;\n    content: '';\n    display: block;\n    height: 0.1rem;\n    left: 50%;\n    position: absolute;\n    top: 50%;\n    transition: 0.3s all;\n    width: 2rem;\n  }\n\n  &:before {\n    transform: translate(-50%, -50%) rotate(45deg);\n  }\n\n  &:after {\n    transform: translate(-50%, -50%) rotate(-45deg);\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -3918,7 +3918,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$4() {
-  var data = _taggedTemplateLiteral(["\n  -webkit-appearance: none;\n  background-color: ", ";\n  color: ", ";\n  border: 0;\n  cursor: pointer;\n  display: inline-block;\n  letter-spacing: 1px;\n  line-height: 1;\n  outline: none;\n  overflow: hidden;\n  padding: 0;\n  text-decoration: none;\n  transition: all 0.3s;\n  user-select: none;\n  white-space: nowrap;\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  -webkit-appearance: none;\n  background-color: ", ";\n  border-radius: 5px;\n  border: 0;\n  color: ", ";\n  cursor: pointer;\n  display: inline-block;\n  font-family: inherit;\n  letter-spacing: 1px;\n  line-height: 1;\n  outline: none;\n  overflow: hidden;\n  padding: 0;\n  text-decoration: none;\n  transition: all 0.3s;\n  user-select: none;\n  white-space: nowrap;\n  ", "\n"]);
 
   _templateObject$4 = function _templateObject() {
     return data;
@@ -3938,7 +3938,7 @@ var Button = styled.button(_templateObject$4(), function (props) {
 var DeleteImageButton = styled(Button)(_templateObject3());
 
 function _templateObject$5() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: inline-block;\n  opacity: 0.4;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: inline-block;\n  height: auto;\n  opacity: 0.4;\n  width: 100%;\n"]);
 
   _templateObject$5 = function _templateObject() {
     return data;
@@ -3949,7 +3949,7 @@ function _templateObject$5() {
 var Image = styled.img(_templateObject$5());
 
 function _templateObject$6() {
-  var data = _taggedTemplateLiteral(["\n  &,\n  &:visited {\n    color: ", ";\n  }\n  display: inline-block;\n  font-size: ", ";\n  font-weight: ", ";\n  line-height: ", ";\n  text-align: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  &,\n  &:visited {\n    color: ", ";\n  }\n  display: inline-block;\n  font-family: inherit;\n  font-size: ", ";\n  font-weight: ", ";\n  line-height: ", ";\n  text-align: ", ";\n"]);
 
   _templateObject$6 = function _templateObject() {
     return data;
@@ -3969,27 +3969,136 @@ var Text = styled.span(_templateObject$6(), function (props) {
   return props.theme.font.align[props.textAlign];
 });
 Text.defaultProps = {
+  color: 'textColor',
   fontWeight: 'normal'
+};
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  padding: 0 15px 15px 15px;\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n  padding: 15px;\n  position: relative;\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  border-bottom: 1px solid ", ";\n  display: flex;\n  justify-content: center;\n  padding: 20px;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n      display: flex;\n      opacity: 1;\n      pointer-events: auto;\n      visibility: visible;\n\n      ", " {\n        transform: translate(0, 0);\n      }\n\n      ", " {\n        opacity: 1;\n      }\n    "]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$1() {
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  bottom: 0;\n  dsplay: flex;\n  justify-content: center;\n  left: 0;\n  opacity: 0;\n  pointer-events: none;\n  position: fixed;\n  right: 0;\n  top: 0;\n  transition: all 0.3s;\n  visibility: hidden;\n  z-index: 9;\n\n  ", " {\n    transform: translate(0, -50px);\n  }\n\n  ", "\n"]);
+
+  _templateObject3$1 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$2() {
+  var data = _taggedTemplateLiteral(["\n  background-color: rgba(0, 0, 0, 0.8);\n  bottom: 0;\n  dsplay: flex;\n  left: 0;\n  opacity: 0;\n  position: fixed;\n  right: 0;\n  top: 0;\n  transition: all 0.3s;\n"]);
+
+  _templateObject2$2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$7() {
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 5px;\n  max-width: 360px;\n  transition: transform 0.3s ease-out;\n  z-index: 9999;\n"]);
+
+  _templateObject$7 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Content = styled.div(_templateObject$7(), function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.modalColor;
+});
+var Overlay = styled.div(_templateObject2$2());
+var Wrapper = styled.div(_templateObject3$1(), Content, function (_ref2) {
+  var isOpen = _ref2.isOpen;
+  return isOpen && css(_templateObject4(), Content, Overlay);
+});
+var HeaderWrapper = styled.div(_templateObject5(), function (_ref3) {
+  var theme = _ref3.theme;
+  return theme.colors.outlineColor;
+});
+var Body = styled.div(_templateObject6());
+var Footer = styled.div(_templateObject7());
+
+var Header = function Header(_ref4) {
+  var children = _ref4.children,
+      props = _objectWithoutProperties(_ref4, ["children"]);
+
+  return React__default.createElement(HeaderWrapper, props, React__default.createElement(Text, {
+    align: "center"
+  }, children));
+};
+
+var Modal = function Modal(_ref5) {
+  var children = _ref5.children,
+      isOpen = _ref5.isOpen,
+      toggle = _ref5.toggle;
+  return React__default.createElement(Wrapper, {
+    isOpen: isOpen
+  }, React__default.createElement(Overlay, {
+    onClick: toggle
+  }), React__default.createElement(Content, null, children));
+};
+
+Modal.Header = Header;
+Modal.Body = Body;
+Modal.Footer = Footer;
+Modal.propTypes = {
+  children: propTypes.node.isRequired,
+  isOpen: propTypes.bool.isRequired,
+  toggle: propTypes.func.isRequired
 };
 
 var theme = {
   buttons: {
     small: {
-      fontSize: '1.2rem',
+      fontSize: '12px',
       fontWeight: 'normal',
-      padding: '0.5rem 1.0rem'
+      padding: '5px 10px'
     },
     normal: {
-      fontSize: '1.4rem',
+      fontSize: '14px',
       fontWeight: 'normal',
-      height: '4.0rem',
-      padding: '0.5rem 1.0rem'
-    },
-    large: {
-      fontSize: '1.4rem',
-      fontWeight: 'bold',
-      height: '5.0rem',
-      padding: '1.4rem 3.0rem'
+      height: '35px',
+      padding: '5px 10px'
     }
   },
   font: {
@@ -4000,10 +4109,10 @@ var theme = {
       right: 'right'
     },
     size: {
-      big: '1.8rem',
+      big: '18px',
       inherit: 'inherit',
-      normal: '1.6rem',
-      small: '1rem'
+      normal: '16px',
+      small: '10px'
     },
     weight: {
       normal: 'normal',
@@ -4016,25 +4125,27 @@ var darkTheme = {
   background: '#111111',
   outlineColor: 'rgba(255,255,255,0.6)',
   textColor: 'rgba(255,255,255,0.6)',
-  buttonColor: '#ff0e1f'
+  buttonColor: '#ff0e1f',
+  modalColor: '#111111'
 };
 var lightTheme = {
   background: '#ffffff',
   outlineColor: '#111111',
   textColor: 'rgba(255,255,255,0.6)',
-  buttonColor: '#ff0e1f'
+  buttonColor: '#ff0e1f',
+  modalColor: '#ffffff'
 };
 
-function _templateObject$7() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  height: 2rem;\n  justify-content: space-between;\n  padding-right: 0.5px;\n  position: absolute;\n  right: 0.5rem;\n  top: 0.2rem;\n  width: 3rem;\n  z-index: 10;\n  cursor: pointer;\n"]);
+function _templateObject$8() {
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  cursor: pointer;\n  display: flex;\n  height: 2rem;\n  justify-content: space-between;\n  padding-right: 0.5px;\n  position: absolute;\n  right: 0.5rem;\n  top: 0.2rem;\n  width: 3rem;\n"]);
 
-  _templateObject$7 = function _templateObject() {
+  _templateObject$8 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ImageOptionsWrapper = styled('div')(_templateObject$7());
+var ImageOptionsWrapper = styled('div')(_templateObject$8());
 
 function DeleteIcon(props) {
   return createElement("svg", _extends({
@@ -4363,7 +4474,10 @@ function MultiImageInput(_ref) {
   }, React__default.createElement(ImageBox, null, Array(numberOfImages).fill().map(function (_, index) {
     return React__default.createElement(ImageInput, {
       key: index
-    }, files[index] ? React__default.createElement(React__default.Fragment, null, React__default.createElement(ImageOptionsWrapper, null, React__default.createElement(EditIcon, {
+    }, files[index] ? React__default.createElement(React__default.Fragment, null, React__default.createElement(ImageOverlay, null, React__default.createElement(Image, {
+      alt: "uploaded image".concat(index),
+      src: files[index]
+    })), React__default.createElement(ImageOptionsWrapper, null, React__default.createElement(EditIcon, {
       "aria-label": "Edit Image ".concat(index),
       role: "button",
       onClick: function onClick(e) {
@@ -4375,9 +4489,6 @@ function MultiImageInput(_ref) {
       onClick: function onClick(e) {
         return removeImage(e, index);
       }
-    })), React__default.createElement(ImageOverlay, null, React__default.createElement(Image, {
-      alt: "uploaded image".concat(index),
-      src: files[index]
     }))) : React__default.createElement("div", {
       role: "button",
       onClick: function onClick() {
@@ -4411,21 +4522,20 @@ function MultiImageInput(_ref) {
       },
       accept: "image/*"
     }));
-  })), allowCrop && currentImage && React__default.createElement(React__default.Fragment, null, React__default.createElement(ReactCrop, _extends({}, cropConfig, {
-    src: currentImage,
+  })), allowCrop && currentImage && React__default.createElement(Modal, {
+    isOpen: true,
+    toggle: exitCrop
+  }, React__default.createElement(Modal.Header, null, "Crop Image"), React__default.createElement(Modal.Body, null, React__default.createElement(ReactCrop, _extends({}, cropConfig, {
     crop: crop,
     onChange: setCrop,
+    onComplete: onCropComplete,
     onImageLoaded: onImageLoaded,
-    onComplete: onCropComplete
-  })), React__default.createElement(Button, {
+    src: currentImage
+  }))), React__default.createElement(Modal.Footer, null, React__default.createElement(Button, {
     type: "button",
     onClick: exitCrop,
-    size: "small",
-    style: {
-      marginTop: '1rem',
-      display: 'block'
-    }
-  }, "Crop")));
+    size: "normal"
+  }, "Crop"))));
 }
 MultiImageInput.defaultProps = {
   max: 3,
