@@ -1,7 +1,7 @@
 {
   "name": "react-multiple-image-input",
   "description": "A package for uploading multiple images at a time in react",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
