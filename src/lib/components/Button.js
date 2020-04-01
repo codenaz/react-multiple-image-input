@@ -3,10 +3,12 @@ import styled, { css } from 'styled-components';
 export const Button = styled.button`
   -webkit-appearance: none;
   background-color: ${props => props.theme.colors.buttonColor};
-  color: ${props => props.theme.colors.outlineColor};
+  border-radius: 5px;
   border: 0;
+  color: ${props => props.theme.colors.outlineColor};
   cursor: pointer;
   display: inline-block;
+  font-family: inherit;
   letter-spacing: 1px;
   line-height: 1;
   outline: none;
@@ -30,9 +32,11 @@ export const Button = styled.button`
 
 export const DeleteImageButton = styled(Button)`
   align-items: center;
+  background: none;
   border: none;
   display: flex;
   flex-shrink: 0;
+  font-family: inherit;
   height: 1.5rem;
   justify-content: center;
   padding-right: 0.5px;
@@ -41,7 +45,7 @@ export const DeleteImageButton = styled(Button)`
   top: 0.5rem;
   width: 1.5rem;
   z-index: 10;
-  background: none;
+
   &:before,
   &:after {
     background: #ff0e1f;

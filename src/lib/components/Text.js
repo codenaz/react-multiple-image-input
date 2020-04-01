@@ -6,6 +6,7 @@ const Text = styled.span`
     color: ${props => props.theme.colors[props.color]};
   }
   display: inline-block;
+  font-family: inherit;
   font-size: ${props => props.theme.font.size[props.fontSize]};
   font-weight: ${props => props.theme.font.weight[props.fontWeight]};
   line-height: ${props =>
@@ -14,6 +15,7 @@ const Text = styled.span`
 `;
 
 Text.defaultProps = {
+  color: 'textColor',
   fontWeight: 'normal'
 };
 

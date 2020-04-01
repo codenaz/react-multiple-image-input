@@ -9,6 +9,7 @@ import ImageInput from './components/ImageInput';
 import { Button } from './components/Button';
 import Image from './components/Image';
 import Text from './components/Text';
+import Modal from './components/Modal';
 import theme, { darkTheme, lightTheme } from './theme';
 import { ImageOptionsWrapper } from './components/ImageOptions';
 import DeleteIcon from './components/DeleteIcon';
@@ -259,6 +260,9 @@ export default function MultiImageInput({
             <ImageInput key={index}>
               {files[index] ? (
                 <>
+                  <ImageOverlay>
+                    <Image alt={`uploaded image${index}`} src={files[index]} />
+                  </ImageOverlay>
                   <ImageOptionsWrapper>
                     <EditIcon
                       aria-label={`Edit Image ${index}`}
@@ -271,9 +275,6 @@ export default function MultiImageInput({
                       onClick={e => removeImage(e, index)}
                     />
                   </ImageOptionsWrapper>
-                  <ImageOverlay>
-                    <Image alt={`uploaded image${index}`} src={files[index]} />
-                  </ImageOverlay>
                 </>
               ) : (
                 <div
@@ -307,25 +308,26 @@ export default function MultiImageInput({
             </ImageInput>
           ))}
       </ImageBox>
+
       {allowCrop && currentImage && (
-        <>
-          <ReactCrop
-            {...cropConfig}
-            src={currentImage}
-            crop={crop}
-            onChange={setCrop}
-            onImageLoaded={onImageLoaded}
-            onComplete={onCropComplete}
-          />
-          <Button
-            type="button"
-            onClick={exitCrop}
-            size="small"
-            style={{ marginTop: '1rem', display: 'block' }}
-          >
-            Crop
-          </Button>
-        </>
+        <Modal isOpen={true} toggle={exitCrop}>
+          <Modal.Header>Crop Image</Modal.Header>
+          <Modal.Body>
+            <ReactCrop
+              {...cropConfig}
+              crop={crop}
+              onChange={setCrop}
+              onComplete={onCropComplete}
+              onImageLoaded={onImageLoaded}
+              src={currentImage}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button type="button" onClick={exitCrop} size="normal">
+              Crop
+            </Button>
+          </Modal.Footer>
+        </Modal>
       )}
     </ThemeProvider>
   );
