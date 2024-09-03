@@ -1,0 +1,1 @@
+export type { default as MultiImageInput } from './multi-image-input';
