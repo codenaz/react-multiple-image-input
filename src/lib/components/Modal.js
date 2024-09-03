@@ -23,7 +23,9 @@ const Overlay = styled.div`
   transition: all 0.3s;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.withConfig({
+  shouldForwardProp: prop => !['isOpen'].includes(prop)
+})`
   align-items: center;
   bottom: 0;
   dsplay: flex;
@@ -82,7 +84,7 @@ const Footer = styled.div`
 const Header = ({ children, ...props }) => {
   return (
     <HeaderWrapper {...props}>
-      <Text align="center">{children}</Text>
+      <Text textAlign="center">{children}</Text>
     </HeaderWrapper>
   );
 };

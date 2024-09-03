@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/codenaz/react-multiple-image-input.svg?branch=master)](https://travis-ci.org/codenaz/react-multiple-image-input)
 
-![demo](https://s4.gifyu.com/images/multiple-image-upload.gif)
+![demo](https://res.cloudinary.com/dyjqbwicx/image/upload/v1725403003/ezgif.com-video-to-gif-converter_m4fuo1.gif)
 
 Requires react >= 16.8.0
 
@@ -113,21 +113,17 @@ crop: {
 <MultiImageInput  cropConfig={{crop}} />
 ```
 
-If you want a fixed aspect you can either omit `width` and `height`:
+If you want a fixed aspect you can either omit `width` and `height` and pass aspect to the cropConfig:
 
 ```js
-crop: {
-  aspect: 16 / 9;
-}
+
+cropConfig = {crop: {}, aspect: 16 / 9};
 ```
 
 Or specify one or both of the dimensions:
 
 ```js
-crop: {
-  aspect: 16/9,
-  width: 50,
-}
+cropConfig = {crop: {width: 100}, aspect: 16 / 9};
 ```
 
 If you specify just one of the dimensions, the other will be calculated for you.

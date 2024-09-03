@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ReactCrop from 'react-image-crop';
+import ReactCrop, {centerCrop, makeAspectCrop} from 'react-image-crop';
 import { ThemeProvider } from 'styled-components';
 import ImageIcon from './components/ImageIcon';
 import ImageOverlay from './components/ImageOverlay';
@@ -158,6 +158,22 @@ export default function MultiImageInput({
 
   const onImageLoaded = image => {
     currentFile.current = image;
+    if (crop.aspect) {
+      const croppedImage = centerCrop(
+        makeAspectCrop(
+          {
+            unit: '%',
+            width: 100,
+          },
+          crop.aspect,
+          image.naturalWidth,
+          image.naturalHeight
+        ),
+        image.naturalWidth,
+        image.naturalHeight
+      )
+      setCrop(croppedImage);
+    }
   };
 
   const makeClientCrop = crop => {
@@ -318,9 +334,10 @@ export default function MultiImageInput({
               crop={crop}
               onChange={setCrop}
               onComplete={onCropComplete}
-              onImageLoaded={onImageLoaded}
               src={currentImage}
-            />
+            >
+              <Image src={currentImage} onLoad={onImageLoaded} alt="Crop" />
+            </ReactCrop>
           </Modal.Body>
           <Modal.Footer>
             <Button type="button" onClick={exitCrop} size="normal">
@@ -341,7 +358,8 @@ MultiImageInput.defaultProps = {
     maxWidth: 800,
     minWidth: 300,
     crop: {},
-    ruleOfThirds: true
+    ruleOfThirds: true,
+    aspect: 4 / 3
   }
 };
 

@@ -4,10 +4,10 @@ exports[`renders correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-AxirZ sc-AxiKw daypqs"
+      class="sc-gtLWhw sc-egkSDF dBuNdU fhGJvS"
     >
       <div
-        class="sc-AxirZ sc-AxhCb eJEChV"
+        class="sc-gtLWhw sc-fAUdSK dBuNdU hzsuBv"
       >
         <div
           role="button"
@@ -32,7 +32,7 @@ exports[`renders correctly 1`] = `
             />
           </svg>
           <span
-            class="sc-Axmtr ljNGXc"
+            class="sc-kLhKbu eYeunN"
             color="outlineColor"
             font-size="small"
             font-weight="normal"
