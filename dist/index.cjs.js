@@ -3016,12 +3016,7 @@ function MultiImageInput(_ref) {
       e.preventDefault();
       const maxAllowedImages = max - Object.keys(files).length;
       if (e.target.files.length > maxAllowedImages) {
-        if (props.handleError) {
-          props.handleError(`You cannot upload more than ${max} ${max > 1 ? 'images' : 'image'}`);
-        } else {
-          alert(`You cannot upload more than ${max} ${max > 1 ? 'images' : 'image'}`);
-        }
-        return;
+        throw new Error(`You cannot upload more than ${max} ${max > 1 ? 'images' : 'image'}`);
       }
       const selectedFiles = Array.from(e.target.files);
       const imageURIs = await Promise.all(selectedFiles.map(f => {
