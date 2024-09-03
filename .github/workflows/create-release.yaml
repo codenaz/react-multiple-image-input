@@ -1,0 +1,32 @@
+name: Create release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-release:
+    runs-on: ubuntu-20.04
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: node
+          package-name: react-multiple-image-input
+          default-branch: main
+          changelog-path: CHANGELOG.md
+
+  test:
+    uses: ./.github/workflows/test.yaml
+    needs: create-release
+    if: ${{ !needs.create-release.outputs.release_created }}
+  
+  deploy:
+    uses: ./.github/workflows/publish.yaml
+    needs: create-release
+    if: ${{ needs.create-release.outputs.release_created }}
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
