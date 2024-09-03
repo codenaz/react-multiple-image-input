@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const Text = styled.span`
+const Text = styled.span.withConfig({
+  shouldForwardProp: prop => !['textAlign'].includes(prop)
+})`
   &,
   &:visited {
     color: ${props => props.theme.colors[props.color]};

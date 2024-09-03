@@ -5,7 +5,6 @@ import MultiImageInput from '../lib';
 
 const crop = {
   unit: '%',
-  aspect: 4 / 3,
   width: '100'
 };
 let images = {};
@@ -19,7 +18,7 @@ test('renders correctly', () => {
     <MultiImageInput
       images={images}
       setImages={setImages}
-      cropConfig={{ crop, ruleOfThirds: true }}
+      cropConfig={{ crop, ruleOfThirds: true, aspect: 4 / 3 }}
     />
   );
   expect(baseElement).toMatchSnapshot();
@@ -35,7 +34,7 @@ test('renders the right number of images', () => {
     <MultiImageInput
       images={images}
       setImages={setImages}
-      cropConfig={{ crop, ruleOfThirds: true }}
+      cropConfig={{ crop, ruleOfThirds: true, aspect: 4 / 3 }}
     />
   );
   const selectedImages = getAllByAltText(/^uploaded image\d/);
@@ -52,7 +51,7 @@ test('renders the uploadImage element', () => {
     <MultiImageInput
       images={images}
       setImages={setImages}
-      cropConfig={{ crop, ruleOfThirds: true }}
+      cropConfig={{ crop, ruleOfThirds: true, aspect: 4 / 3 }}
     />
   );
   const uploadImage = getByText('ADD IMAGE');
@@ -70,7 +69,7 @@ test('deletes an image', () => {
     <MultiImageInput
       images={images}
       setImages={setImages}
-      cropConfig={{ crop, ruleOfThirds: true }}
+      cropConfig={{ crop, ruleOfThirds: true, aspect: 4 / 3 }}
     />
   );
   const deleteButton = getAllByRole('button', { label: 'Delete Image 0' });
@@ -90,7 +89,7 @@ test('crops an image', () => {
     <MultiImageInput
       images={images}
       setImages={setImages}
-      cropConfig={{ crop, ruleOfThirds: true }}
+      cropConfig={{ crop, ruleOfThirds: true, aspect: 4 / 3 }}
     />
   );
   const editButton = getAllByRole('button', { label: 'Edit Image 0' });

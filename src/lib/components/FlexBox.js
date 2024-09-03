@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-const FlexBox = styled.div`
+const FlexBox = styled.div.withConfig({
+  shouldForwardProp: prop => !['alignItems', 'column', 'flex', 'justifyContent'].includes(prop)
+})`
   align-items: ${props => props.alignItems};
   display: flex;
   flex-direction: ${props => (props.column ? 'column' : 'row')};
