@@ -1,6 +1,6 @@
 # React Multple Image Input
 
-[![Build Status](https://travis-ci.org/codenaz/react-multiple-image-input.svg?branch=master)](https://travis-ci.org/codenaz/react-multiple-image-input)
+![Build](https://github.com/codenaz/react-multiple-image-input/actions/workflows/create-release.yaml/badge.svg?branch=main)
 
 ![demo](https://res.cloudinary.com/dyjqbwicx/image/upload/v1725403003/ezgif.com-video-to-gif-converter_m4fuo1.gif)
 
