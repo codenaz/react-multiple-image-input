@@ -8,6 +8,8 @@ Requires react >= 16.8.0
 
 This package makes use of [react-image-cropper](https://github.com/DominicTobias/react-image-crop)
 
+**Try it on [codesandbox](https://codesandbox.io/p/sandbox/trusting-mendel-hg4jml?file=%2Fsrc%2FApp.js%3A20%2C16)**
+
 ## Installation
 
 Run the following command:
